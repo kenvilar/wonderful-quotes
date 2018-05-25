@@ -13,6 +13,10 @@
 </template>
 
 <script>
+  import Vue from 'vue';
+  import VueSweetalert2 from 'vue-sweetalert2';
+
+  Vue.use(VueSweetalert2);
   import QuoteGrid from './components/QuoteGrid';
   import NewQuote from './components/NewQuote';
 
@@ -34,8 +38,8 @@
         if (quote) {
           this.quotes.push(quote);
         }
-      }
-    }
+      },
+    },
   };
 </script>
 

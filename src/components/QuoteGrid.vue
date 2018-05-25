@@ -14,9 +14,30 @@
     },
     methods: {
       removeQuote(quoteIndex) {
-        this.quotes.splice(quoteIndex, 1);
+        this.$swal({
+          title: 'Are you sure you want to delete this quote?',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, keep it',
+        }).then((result) => {
+          if (result.value) {
+            this.$swal(
+              'Deleted!',
+              'Your quote has been deleted.',
+              'success',
+            );
+            this.quotes.splice(quoteIndex, 1);
+          } else if (result.dismiss) {
+            this.$swal(
+              'Cancelled',
+              'Your quote is safe :)',
+              'error',
+            );
+          }
+        });
       },
-    }
+    },
   };
 </script>
 

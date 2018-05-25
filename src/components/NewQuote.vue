@@ -23,8 +23,15 @@
     },
     methods: {
       addQuote() {
-        this.$emit('quoteAdded', this.quote);
-        this.quote = '';
+        this.$swal({
+          position: 'center',
+          type: 'success',
+          title: 'Your quote has been saved',
+          showConfirmButton: true,
+        }).then(() => {
+          this.$emit('quoteAdded', this.quote);
+          this.quote = '';
+        });
       },
     },
   };
