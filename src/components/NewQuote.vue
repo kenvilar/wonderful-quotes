@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-sm-12 col-md-12">
-      <form action="">
+      <form>
         <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-8 offset-md-2 form-group">
           <label>Quote</label>
           <textarea class="form-control" rows="3" v-model="quote"></textarea>
@@ -23,15 +23,8 @@
     },
     methods: {
       addQuote() {
-        this.$swal({
-          position: 'center',
-          type: 'success',
-          title: 'Your quote has been saved',
-          showConfirmButton: true,
-        }).then(() => {
-          this.$emit('quoteAdded', this.quote);
-          this.quote = '';
-        });
+        this.$emit('quoteAdded', this.quote);
+        this.quote = '';
       },
     },
   };
